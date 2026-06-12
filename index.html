@@ -15,7 +15,6 @@
         #loginOverlay { position:fixed; inset:0; background:#f3f4f6; z-index:9999; display:flex; justify-content:center; align-items:center; }
         .login-box { background:white; padding:40px; border-radius:12px; box-shadow:0 10px 25px rgba(0,0,0,0.1); text-align:center; width: 100%; max-width: 350px; }
         
-        /* แท็บเมนู */
         .main-tabs { display: flex; gap: 5px; margin-bottom: 25px; border-bottom: 2px solid #e5e7eb; padding-bottom: 5px; flex-wrap: wrap; }
         .tab-btn { background: none; border: none; padding: 10px 15px; font-size: 1rem; font-weight: 500; cursor: pointer; color: var(--text-muted); transition: 0.2s; border-radius: 8px; flex: 1; text-align: center; white-space: nowrap; }
         .tab-btn.active { background-color: var(--primary); color: white; }
@@ -68,7 +67,6 @@
         .breakdown-item { display: flex; justify-content: space-between; }
         .breakdown-item.profit { font-weight: 600; color: var(--success); font-size: 1.1rem; padding-top: 10px; border-top: 1px solid #e2e8f0; }
         
-        /* ระบบตารางแบบ Responsive */
         .table-responsive { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
         .custom-table { width: 100%; border-collapse: collapse; margin: 15px 0 20px; min-width: 600px; }
         .custom-table th, .custom-table td { padding: 12px; text-align: left; border-bottom: 1px solid #e2e8f0; font-size: 0.95rem; }
@@ -91,7 +89,6 @@
         .history-section { margin-top: 35px; background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 12px; }
         #report-print-container, .print-header { display: none; }
         
-        /* 📱 ระบบปรับขนาดบนมือถือ (Mobile Responsive) 📱 */
         @media (max-width: 768px) {
             body { padding: 10px; }
             .container { padding: 20px; }
@@ -100,7 +97,7 @@
             .dash-cards { grid-template-columns: 1fr 1fr; }
             .flex-row > .input-group { flex: 1 1 100%; min-width: 100%; margin-bottom: 10px; }
             .job-mode-container { grid-template-columns: 1fr; }
-            .row-header { display: none; } /* ซ่อนหัวตารางบนมือถือ */
+            .row-header { display: none; }
             .item-row { flex-wrap: wrap; background: #f8fafc; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0; position: relative; margin-bottom: 15px; }
             .item-row input { width: 100%; flex: 1 1 100% !important; margin-bottom: 10px; }
             .item-row button.btn-remove { width: 100%; flex: 1 1 100% !important; margin-bottom: 0; }
@@ -111,7 +108,6 @@
             .radio-group { grid-template-columns: 1fr 1fr; }
         }
 
-        /* สำหรับการพิมพ์ */
         @media print {
             @page { size: A4 landscape; margin: 10mm; }
             body { padding: 0; background-color: white; color: black; }
@@ -122,11 +118,6 @@
             body:not(.print-mode-report) .print-header { display: block; text-align: center; margin-bottom: 30px; border-bottom: 2px solid #1f2937; padding-bottom: 15px; }
             body:not(.print-mode-report) input, body:not(.print-mode-report) select { border: none !important; padding: 5px 0 !important; background: transparent !important; color: black !important; }
         }
-        #report-print-container h2 { text-align: center; margin-bottom: 20px; padding-bottom: 10px; font-size: 1.5rem; }
-        #report-print-container table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
-        #report-print-container th, #report-print-container td { border: 1px solid #333; padding: 8px; text-align: left; }
-        #report-print-container th { background-color: #f3f4f6 !important; -webkit-print-color-adjust: exact; }
-        #report-print-container tfoot td { font-weight: bold; background-color: #e2e8f0 !important; -webkit-print-color-adjust: exact; }
     </style>
 </head>
 <body>
@@ -138,12 +129,12 @@
 
     <div class="container">
         <div class="main-tabs no-print">
-            <button class="tab-btn" onclick="switchMainTab('dashboard')">📊 แดชบอร์ดงาน</button>
-            <button class="tab-btn active" onclick="switchMainTab('pricing')">📈 ตั้งราคาขาย</button>
-            <button class="tab-btn" onclick="switchMainTab('tools')">💰 คำนวณคอมฯ</button>
-            <button class="tab-btn" onclick="switchMainTab('project-expenses')">🚧 รายจ่ายงาน</button>
-            <button class="tab-btn" onclick="switchMainTab('company-expenses')">🏢 รายจ่ายบริษัท</button>
-            <button class="tab-btn" onclick="switchMainTab('income')" style="color:var(--success); font-weight:600;">💵 บันทึกรายได้</button>
+            <button class="tab-btn" onclick="switchMainTab('dashboard', this)">📊 แดชบอร์ดงาน</button>
+            <button class="tab-btn active" onclick="switchMainTab('pricing', this)">📈 ตั้งราคาขาย</button>
+            <button class="tab-btn" onclick="switchMainTab('tools', this)">💰 คำนวณคอมฯ</button>
+            <button class="tab-btn" onclick="switchMainTab('project-expenses', this)">🚧 รายจ่ายงาน</button>
+            <button class="tab-btn" onclick="switchMainTab('company-expenses', this)">🏢 รายจ่ายบริษัท</button>
+            <button class="tab-btn" onclick="switchMainTab('income', this)" style="color:var(--success); font-weight:600;">💵 บันทึกรายได้</button>
         </div>
 
         <div class="print-header"><h2>รายงานข้อมูลเชิงบริหาร</h2><div style="display:flex; justify-content:space-between; margin-top:20px;"><div><strong>เลขที่รายงาน:</strong> <span id="lbl-pdf-id">-</span></div><div><strong>วันที่เอกสาร:</strong> <span id="lbl-pdf-date">-</span></div></div><div style="display:flex; justify-content:space-between; margin-top:10px;"><div><strong>ชื่อลูกค้า:</strong> <span id="lbl-pdf-customer">-</span></div><div><strong>ชื่อโครงการ:</strong> <span id="lbl-pdf-project">-</span></div></div></div>
@@ -227,7 +218,7 @@
     </div>
 
     <script>
-        // 🛑 ใส่ Web App URL ของคุณตรงนี้ 🛑
+        // 🛑 นำเส้นทาง Web App Link ของคุณมาวางตรงนี้ 🛑
         const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyzCLGQAHZcrUARTsl7rk3tN81pCN6UvPvgZJ39Xxwos5wSowXBQW1fQRy2EpnHarQFlA/exec"; 
 
         let currentTab='pricing', isEditMode=false, globalTasksData=[], globalSearchResults=[], rawChartData={project:[],company:[],income:[],sales:[]}, charts={project:null,company:null};
@@ -237,13 +228,23 @@
         const setTxt = (id, txt) => { if(document.getElementById(id)) document.getElementById(id).textContent = txt; };
         const fmtMoney = num => Number(num).toLocaleString('th-TH', {minimumFractionDigits:2});
 
-        // 🆕 ใช้ localStorage แทน sessionStorage (ล็อกอินครั้งเดียวอยู่ได้ตลอดจนกว่าจะล้างแคชบราวเซอร์)
         function checkLogin() { if(getVal('loginPwd')==='292929') { localStorage.setItem('erp_logged_in','true'); document.getElementById('loginOverlay').style.display='none'; initApp(); } else alert('รหัสผ่านไม่ถูกต้อง'); }
-        document.getElementById('loginPwd').addEventListener('keyup', e => { if(e.key==='Enter') checkLogin(); });
         
-        document.addEventListener("DOMContentLoaded", () => {
-            if(localStorage.getItem('erp_logged_in')==='true') { document.getElementById('loginOverlay').style.display='none'; initApp(); }
-        });
+        // 🆕 ระบบล็อกอินอัตโนมัติแบบทนทานต่อการกด Refresh
+        function checkAutoLogin() {
+            if(localStorage.getItem('erp_logged_in')==='true') { 
+                const overlay = document.getElementById('loginOverlay');
+                if(overlay) overlay.style.display='none'; 
+                initApp(); 
+            }
+        }
+        
+        // ตรวจสอบความพร้อมของหน้าเว็บก่อนเริ่มโหลดข้อมูลสถิติ
+        if (document.readyState === 'loading') {
+            document.addEventListener("DOMContentLoaded", checkAutoLogin);
+        } else {
+            checkAutoLogin();
+        }
 
         function initApp() {
             ['docDate','taskDate'].forEach(id => { if(document.getElementById(id)) document.getElementById(id).valueAsDate = new Date(); });
@@ -252,12 +253,37 @@
             ['selectMonthProject','selectMonthCompany','rpt-m-comp','rpt-m-inc'].forEach(id => document.getElementById(id).innerHTML=mHtml);
             ['selectYearProject','selectYearCompany','rpt-y-comp','rpt-y-inc'].forEach(id => document.getElementById(id).innerHTML=yHtml);
             document.getElementById('comm-container').innerHTML = [0,10,15,20,25,30,35].map(v=>`<input type="radio" name="commission" id="c${v}" value="${v}" class="radio-btn" ${v===25?'checked':''} onchange="calculatePrice()"><label for="c${v}" class="radio-label">${v}%</label>`).join('');
-            addCostRow("อุปกรณ์หลัก",100,1); addCostRow("ค่าแรงช่าง",500,1); addProjectExpenseRow('','',''); addCompanyExpenseRow(); addIncomeRow(); switchMainTab('dashboard'); loadData();
+            
+            // ล้างหน้าจอเพื่อเตรียมวาดฟอร์มตั้งต้น
+            if(document.getElementById('cost-list')) document.getElementById('cost-list').innerHTML = '';
+            if(document.getElementById('project-expense-list')) document.getElementById('project-expense-list').innerHTML = '';
+            if(document.getElementById('company-expense-list')) document.getElementById('company-expense-list').innerHTML = '';
+            if(document.getElementById('income-list')) document.getElementById('income-list').innerHTML = '';
+            
+            addCostRow("อุปกรณ์หลัก",100,1); addCostRow("ค่าแรงช่าง",500,1); addProjectExpenseRow('','',''); addCompanyExpenseRow(); addIncomeRow(); 
+            switchMainTab('dashboard'); // เรียกเปิดหน้าหลัก
+            loadData(); // ทำการดึงฐานข้อมูลมาจัดเรียงบนตาราง
         }
 
-        function switchMainTab(tabId) {
-            currentTab = tabId; document.querySelectorAll('.tab-content').forEach(el=>el.style.display='none'); document.querySelectorAll('.tab-btn').forEach(btn=>btn.classList.remove('active'));
-            document.getElementById(`tab-${tabId}`).style.display='block'; event.target.classList.add('active');
+        // 🆕 ปรับปรุงฟังก์ชันสลับแท็บเมนูให้รองรับการเรียกใช้งานอัตโนมัติ (Programmatic Call) โดยไม่เกิดการ Crash
+        function switchMainTab(tabId, btnEl) {
+            currentTab = tabId; 
+            document.querySelectorAll('.tab-content').forEach(el=>el.style.display='none'); 
+            document.querySelectorAll('.tab-btn').forEach(btn=>btn.classList.remove('active'));
+            document.getElementById(`tab-${tabId}`).style.display='block'; 
+            
+            if (btnEl) {
+                btnEl.classList.add('active');
+            } else {
+                // หากเป็นการสั่งรันออโต้ตอนรีเฟรชหน้าเว็บ ให้วิ่งหาปุ่มที่มีค่าตรงกันมาไฮไลท์แทน
+                const tabs = document.querySelectorAll('.tab-btn');
+                for (let btn of tabs) {
+                    if (btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(`'${tabId}'`)) {
+                        btn.classList.add('active');
+                        break;
+                    }
+                }
+            }
             document.getElementById('general-info-section').style.display = ['company-expenses','tools','dashboard','income'].includes(tabId)?'none':'block';
             if(!isEditMode) updatePrefix(); if(tabId==='tools') calculateLumpSum();
         }
@@ -275,8 +301,8 @@
             if(!SCRIPT_URL) return alert('❌ ไม่พบเส้นทางเชื่อมต่อ SCRIPT_URL');
             fetch(SCRIPT_URL, {method:'POST', body:JSON.stringify(payload)}).then(()=>{ alert('✅ '+msg); isEditMode=false; updatePrefix(); setTimeout(loadData,500); }).catch(()=>{ alert('✅ ดำเนินการเสร็จสิ้น'); isEditMode=false; updatePrefix(); setTimeout(loadData,500); });
         }
+        
         function loadData() { 
-            // โชว์ข้อความกำลังโหลด
             if(document.getElementById('task-table-body')) document.getElementById('task-table-body').innerHTML = '<tr><td colspan="5" align="center">⏳ กำลังโหลดข้อมูล...</td></tr>';
             if(document.getElementById('recent-income-body')) document.getElementById('recent-income-body').innerHTML = '<tr><td colspan="7" align="center">⏳ กำลังโหลดข้อมูล...</td></tr>';
             if(document.getElementById('recent-company-body')) document.getElementById('recent-company-body').innerHTML = '<tr><td colspan="5" align="center">⏳ กำลังโหลดข้อมูล...</td></tr>';
@@ -301,7 +327,6 @@
             if(document.getElementById('recent-company-body')) document.getElementById('recent-company-body').innerHTML = (rawChartData.company||[]).slice(1).reverse().slice(0,5).map(r=>{let d=new Date(r[2]); return `<tr><td>${isNaN(d)?r[2]:d.toLocaleDateString('th-TH')}</td><td>${r[3]}</td><td>${r[4]}</td><td>${r[5]}</td><td align="right" style="font-weight:500;">${fmtMoney(r[8])}</td></tr>`;}).join('') || '<tr><td colspan="5" align="center">ไม่มีประวัติการบันทึก</td></tr>';
         }
 
-        // ================= หมวดงานค้าง (Task) =================
         function loadTasksFromServer() { fetch(`${SCRIPT_URL}?action=loadTasks&t=${Date.now()}`).then(r=>r.json()).then(d=>{ globalTasksData=d; renderTasksTableOnly(); }); }
         function renderTasksTableOnly() {
             const hDone=document.getElementById('hideDoneTasks').checked; let s={total:globalTasksData.length,todo:0,doing:0,done:0};
@@ -314,7 +339,6 @@
         }
         function addNewTask(){ if(!getVal('taskName')) return alert("ระบุชื่องาน"); sendData({action:"saveTask",id:"TSK-"+Date.now(),name:getVal('taskName'),project:getVal('taskProject')||"-",date:getVal('taskDate'),priority:getVal('taskPriority'),status:"todo"},"เพิ่มงานแล้ว"); document.getElementById('taskName').value=''; }
 
-        // ================= หมวดตั้งราคาและโปรเจค =================
         function switchSubMode() { document.getElementById('section-contractor').style.display=document.getElementById('mode_contractor').checked?'block':'none'; document.getElementById('section-trading').style.display=document.getElementById('mode_contractor').checked?'none':'block'; calculatePrice(); }
         function addCostRow(n,p,q){ const d=document.createElement('div'); d.className='item-row'; d.innerHTML=`<input type="text" value="${n}" class="col-2 cost-n" list="dl-cost-items" placeholder="รายการ"><input type="number" value="${p}" class="col-1-2 cost-p" oninput="calculatePrice()"><input type="number" value="${q}" class="col-0-8 cost-q" oninput="calculatePrice()"><button class="btn-remove no-print" onclick="this.parentElement.remove();calculatePrice();">X</button>`; document.getElementById('cost-list').appendChild(d); calculatePrice(); }
         function calculatePrice(){ let t=0; if(document.getElementById('mode_contractor').checked){document.querySelectorAll('#cost-list .item-row').forEach(r=>t+=(parseFloat(r.querySelector('.cost-p').value)||0)*(parseFloat(r.querySelector('.cost-q').value)||0));}else{t=parseFloat(getVal('single-cost'))||0;} setTxt('sum-cost',fmtMoney(t)); let comm=0; document.getElementsByName('commission').forEach(r=>{if(r.checked) comm=parseFloat(r.value);}); let v=parseFloat(getVal('vatPct'))||0, rem=100-(comm+v), sell=0, vA=0, cA=0, net=0; if(rem>0&&t>0){ sell=(t+(t*(parseFloat(getVal('profitPct'))||0)/100))/(rem/100); cA=sell*(comm/100); vA=sell*(v/100); net=sell-cA-vA-t; } setTxt('display-price',fmtMoney(sell)); setTxt('display-cost',fmtMoney(t)); setTxt('display-comm',"-"+fmtMoney(cA)); setTxt('display-vat',"-"+fmtMoney(vA)); setTxt('display-profit',fmtMoney(net)); setTxt('label-comm',`(${comm}%)`); setTxt('label-vat',`(${v}%)`); }
@@ -327,7 +351,6 @@
         function searchProjectExpenses(){ const k=getVal('searchKey'); if(!k) return; fetch(`${SCRIPT_URL}?action=searchProject&searchKey=${encodeURIComponent(k)}`).then(r=>r.json()).then(d=>{ globalSearchResults=d; let uq={}; d.forEach(r=>uq[r.reportId]=r); document.getElementById('body-search-results').innerHTML=Object.keys(uq).map(k=>`<tr><td><strong>${k}</strong></td><td>${uq[k].customerName} / ${uq[k].projectName}</td><td style="text-align:right;"><button class="btn-edit-item" onclick="loadProjectToEdit('${k}')">✏️ ดึงข้อมูล</button></td></tr>`).join('')||'<tr><td colspan="3">ไม่พบข้อมูล</td></tr>'; document.getElementById('search-results-zone').style.display='block'; }); }
         function loadProjectToEdit(id){ const m=globalSearchResults.filter(r=>r.reportId===id); if(!m.length) return; isEditMode=true; document.getElementById('reportId').value=id; document.getElementById('docDate').value=m[0].docDate.substring(0,10); document.getElementById('customerName').value=m[0].customerName; document.getElementById('projectName').value=m[0].projectName; document.getElementById('project-expense-list').innerHTML=''; m.forEach(i=>addProjectExpenseRow(i.expenseItem,i.amount,i.notes)); window.scrollTo(0,0); }
 
-        // ================= TAB 4: บริษัท =================
         function addCompanyExpenseRow() {
             const d=document.createElement('div'); d.className='data-card comp-exp-card';
             d.innerHTML=`<div class="flex-row" style="margin-bottom:10px;"><div class="input-group"><label>วันที่บิล</label><input type="date" class="c-date" value="${new Date().toISOString().substring(0,10)}"></div><div class="input-group"><label>เลขที่บิล</label><input type="text" class="c-bno" placeholder="ระบุเลขบิล"></div><div class="input-group"><label>หมวดหมู่</label><select class="c-cat">${categories.map(c=>`<option value="${c}">${c}</option>`).join('')}</select></div></div><div class="flex-row" style="align-items:flex-end;"><div class="input-group" style="flex:1.5;"><label>ผู้ขาย</label><input type="text" class="c-vend" list="dl-vendors" placeholder="ระบุผู้ขาย..."></div><div class="input-group" style="flex:1.5;"><label>รายละเอียดบิล</label><input type="text" class="c-desc" list="dl-bill-desc" placeholder="เช่น ใช้กับงานสาขา..."></div><div class="input-group"><label>ยอดรวม (บาท)</label><input type="number" class="c-amt" oninput="calcCompanyExpenses()" placeholder="0.00"></div><div style="padding-bottom:8px;"><label><input type="checkbox" class="c-vat" onchange="calcCompanyExpenses()"> มี VAT</label></div><div class="vat-breakdown"><div>ก่อน VAT: <span class="cb">0.00</span></div><div>ภาษี: <span class="cv">0.00</span></div></div><button class="btn-remove" onclick="this.parentElement.parentElement.remove(); calcCompanyExpenses();">X</button></div>`;
@@ -342,7 +365,6 @@
             if(!itm.length) return alert('ระบุยอดเงินก่อนบันทึก'); sendData({action:"saveCompanyExpense",reportId:getVal('comReportId'),items:itm},'บันทึกบิลบริษัทสำเร็จ'); document.getElementById('company-expense-list').innerHTML=''; addCompanyExpenseRow();
         }
 
-        // ================= TAB 5: รายได้ =================
         function addIncomeRow() {
             const d=document.createElement('div'); d.className='data-card inc-card';
             d.innerHTML=`<div class="flex-row" style="margin-bottom:10px;"><div class="input-group"><label>ใบกำกับภาษีเลขที่</label><input type="text" class="i-no" placeholder="INV-..."></div><div class="input-group"><label>วันที่ใบกำกับ</label><input type="date" class="i-date" value="${new Date().toISOString().substring(0,10)}"></div><div class="input-group" style="flex:1.5;"><label>ชื่อลูกค้า</label><input type="text" class="i-cust" list="dl-customers" placeholder="บริษัท..."></div><div class="input-group"><label>เลขผู้เสียภาษี</label><input type="text" class="i-tax" placeholder="13 หลัก"></div></div><div class="flex-row" style="align-items:flex-end;"><div class="input-group"><label>รายได้ (มี VAT)</label><div style="display:flex; gap:5px;"><select class="i-vat-type" onchange="calcIncome()" style="width:45%;"><option value="in">รวม VAT</option><option value="ex">แยก VAT</option></select><input type="number" class="i-amt-v" oninput="calcIncome()" placeholder="0.00" style="width:55%;"></div></div><div class="input-group"><label>รายได้ (ไม่มี VAT)</label><input type="number" class="i-amt-nv" oninput="calcIncome()" placeholder="0.00"></div><div class="input-group"><label>ภาษีขาย 7%</label><input type="text" class="i-vat-show" readonly value="0.00"></div></div><div class="flex-row" style="align-items:flex-end;"><div class="input-group" style="flex:2;"><label>รายละเอียด/โครงการ</label><input type="text" class="i-note" list="dl-projects" placeholder="..."></div><div class="input-group"><label>หัก ณ ที่จ่าย</label><select class="i-wht-p" onchange="calcIncome()"><option value="0">ไม่หัก</option><option value="1">หัก 1%</option><option value="3">หัก 3%</option></select></div><div class="input-group"><label>ใบหัก ณ ที่จ่าย</label><select class="i-wht-s"><option value="received">✅ ได้รับแล้ว</option><option value="pending">⏳ ยังไม่ได้ (สร้างงาน)</option></select></div><div class="vat-breakdown"><div>ถูกหัก ณ ที่จ่าย: <span class="iwht">0.00</span></div><div style="color:var(--primary);">รับสุทธิ: <span class="inet">0.00</span></div></div><button class="btn-remove" onclick="this.parentElement.parentElement.remove(); calcIncome();">X</button></div>`;
@@ -369,7 +391,6 @@
             document.getElementById('income-list').innerHTML=''; addIncomeRow();
         }
 
-        // ================= Export Report =================
         function exportReport(type, format) {
             if(!rawChartData) return alert('กำลังดึงข้อมูล'); const m=parseInt(getVal(`rpt-m-${type==='company'?'comp':'inc'}`)), y=parseInt(getVal(`rpt-y-${type==='company'?'comp':'inc'}`));
             let hdrs=[], rows='', s1=0, s2=0, s3=0, s4=0, title=`รายงาน${type==='company'?'ค่าใช้จ่ายบริษัท':'รายรับ'} - ${monthNames[m]} ${y}`;
